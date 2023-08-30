@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
+import CustomTextInput from "../components/CustomTextInput";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -10,14 +11,10 @@ const Login = () => {
       <View style={styles.card}>
         <Text style={styles.title}>Iniciar Sesion</Text>
         <View>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Correo electronico"
-          />
-          <TextInput style={styles.textInput} placeholder="Contraseña" />
+          <CustomTextInput placeholder="Correo electronico" />
+          <CustomTextInput placeholder="Contraseña" />
           <CustomButton title="¿Olvidaste tu contraseña?" variant="link" />
         </View>
-
         <View style={styles.buttonContainer}>
           <CustomButton
             title="Iniciar sesion"
@@ -54,15 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 12,
   },
-  textInput: {
-    borderColor: "#eee",
-    borderWidth: 1,
-    padding: 8,
-    borderRadius: 6,
-    width: 300,
-    marginBottom: 12,
-    fontSize: 16,
-  },
+
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
