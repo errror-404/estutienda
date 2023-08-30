@@ -8,7 +8,7 @@ import React from "react";
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
-  variant: "outlined" | "filled";
+  variant: "outlined" | "filled" | "link";
 }
 
 const CustomButton = ({ title, variant, ...rest }: CustomButtonProps) => {
@@ -16,9 +16,16 @@ const CustomButton = ({ title, variant, ...rest }: CustomButtonProps) => {
     <TouchableOpacity style={styles.container} {...rest}>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
-  ) : (
-    <TouchableOpacity style={styles.containerFilled} {...rest}>
+  ) : variant === "filled" ? (
+    <TouchableOpacity
+      style={{ ...styles.container, backgroundColor: "black" }}
+      {...rest}
+    >
       <Text style={styles.titleFilled}>{title}</Text>
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity style={styles.linkContainer} {...rest}>
+      <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -32,17 +39,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 150,
     borderRadius: 6,
-    marginTop: 10,
+    margin: 10,
+    height: 40,
   },
-  containerFilled: {
-    backgroundColor: "#000",
-    width: 150,
-    borderRadius: 6,
-    marginTop: 10,
-    padding: 8,
-  },
-  titleFilled: { fontSize: 16, textAlign: "center", color: "white" },
 
+  titleFilled: { fontSize: 16, textAlign: "center", color: "white" },
+  linkContainer: { marginVertical: 10 },
   title: {
     fontSize: 16,
     textAlign: "center",

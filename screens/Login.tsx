@@ -7,19 +7,30 @@ const Login = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Iniciar Sesion</Text>
-      <TextInput style={styles.textInput} placeholder="Correo electronico" />
-      <TextInput style={styles.textInput} placeholder="Contraseña" />
-      <CustomButton
-        title="Login"
-        variant="outlined"
-        onPress={() => navigation.navigate("HomeStack")}
-      />
-      <CustomButton
-        title="Register"
-        variant="filled"
-        onPress={() => navigation.navigate("Register")}
-      />
+      <View style={styles.card}>
+        <Text style={styles.title}>Iniciar Sesion</Text>
+        <View>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Correo electronico"
+          />
+          <TextInput style={styles.textInput} placeholder="Contraseña" />
+          <CustomButton title="¿Olvidaste tu contraseña?" variant="link" />
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            title="Iniciar sesion"
+            variant="outlined"
+            onPress={() => navigation.navigate("HomeStack")}
+          />
+          <CustomButton
+            title="Registrarse"
+            variant="filled"
+            onPress={() => navigation.navigate("Register")}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -33,6 +44,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  card: {
+    flex: 1,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    maxHeight: 500,
+  },
   title: {
     fontSize: 18,
     marginBottom: 12,
@@ -40,9 +57,14 @@ const styles = StyleSheet.create({
   textInput: {
     borderColor: "#eee",
     borderWidth: 1,
-    padding: 6,
+    padding: 8,
     borderRadius: 6,
     width: 300,
     marginBottom: 12,
+    fontSize: 16,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "row",
   },
 });
