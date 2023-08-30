@@ -9,7 +9,7 @@ const MainNavigation = () => {
   return (
     <MainStack.Navigator screenOptions={{ headerShown: false }}>
       <MainStack.Screen name={"authStack"} component={AuthNavigation} />
-      <MainStack.Screen name={"MainStack"} component={DashboardNavigation} />
+      <MainStack.Screen name={"HomeStack"} component={DashboardNavigation} />
     </MainStack.Navigator>
   );
 };

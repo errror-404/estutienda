@@ -9,7 +9,7 @@ const AuthNavigation = () => {
   return (
     <AuthStack.Navigator>
       <AuthStack.Screen name="Login" component={Login} />
-      <AuthStack.Screen name="SignUp" component={Register} />
+      <AuthStack.Screen name="Register" component={Register} />
     </AuthStack.Navigator>
   );
 };
