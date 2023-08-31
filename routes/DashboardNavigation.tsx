@@ -23,7 +23,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
+        name="Dashboard"
         component={DashboardNavigation}
         options={{ headerShown: false }}
       />

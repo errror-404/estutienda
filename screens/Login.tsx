@@ -3,9 +3,11 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
 import CustomTextInput from "../components/CustomTextInput";
+import { RoutesProps } from "../utils/types/Navigatetype";
 
 const Login = () => {
-  const navigation = useNavigation();
+  const navigationsesion = useNavigation<RoutesProps>();
+  const navigation = useNavigation<RoutesProps>();
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -19,7 +21,7 @@ const Login = () => {
           <CustomButton
             title="Iniciar sesion"
             variant="outlined"
-            onPress={() => navigation.navigate("HomeStack")}
+            onPress={() => navigationsesion.navigate("HomeStack")}
           />
           <CustomButton
             title="Registrarse"

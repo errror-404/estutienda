@@ -6,10 +6,21 @@ import DashboardNavigation from "./DashboardNavigation";
 const MainStack = createNativeStackNavigator();
 
 const MainNavigation = () => {
+  const isLoggedIn = true;
   return (
     <MainStack.Navigator screenOptions={{ headerShown: false }}>
-      <MainStack.Screen name={"authStack"} component={AuthNavigation} />
-      <MainStack.Screen name={"HomeStack"} component={DashboardNavigation} />
+      {isLoggedIn ? (
+        <MainStack.Group>
+          <MainStack.Screen
+            name={"HomeStack"}
+            component={DashboardNavigation}
+          />
+        </MainStack.Group>
+      ) : (
+        <MainStack.Group>
+          <MainStack.Screen name={"authStack"} component={AuthNavigation} />
+        </MainStack.Group>
+      )}
     </MainStack.Navigator>
   );
 };
