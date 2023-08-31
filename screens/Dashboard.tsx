@@ -1,10 +1,15 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import React from "react";
 import CustomCard from "../components/CustomCard";
-import { Dishes } from "../utils/types/Dish";
+import { Dish } from "../utils/types/Dish";
 
 const Dashboard = () => {
-  const mockedItem: Dishes = [
+  const mockedItem: Dish[] = [
+    {
+      title: "Articulo 1",
+      description: "descripcion",
+      price: 100,
+    },
     {
       title: "Articulo 1",
       description: "descripcion",
