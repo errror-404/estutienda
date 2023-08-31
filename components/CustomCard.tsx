@@ -13,9 +13,9 @@ interface CustomCardProps extends TouchableOpacityProps {
   dish?: Dish;
 }
 
-const CustomCard = ({ dish }: CustomCardProps) => {
+const CustomCard = ({ dish, ...rest }: CustomCardProps) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} {...rest}>
       <Image
         source={{
           uri: "https://chedrauimx.vtexassets.com/arquivos/ids/16650816-800-auto?v=638253929464470000&width=800&height=auto&aspect=true",
