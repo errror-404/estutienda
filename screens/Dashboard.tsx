@@ -1,15 +1,31 @@
-import { Button, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import CustomCard from "../components/CustomCard";
+import { Dishes } from "../utils/types/Dish";
 
 const Dashboard = () => {
-  const navigation = useNavigation();
+  const mockedItem: Dishes = [
+    {
+      title: "Articulo 1",
+      description: "descripcion",
+      price: 100,
+    },
+  ];
   return (
-    <View>
-      <Text>Dashboard</Text>
-      <Button title="Cart" onPress={() => navigation.navigate("Cart")} />
+    <View style={styles.container}>
+      <FlatList
+        renderItem={({ item }) => <CustomCard dish={item} />}
+        data={mockedItem}
+      />
     </View>
   );
 };
 
 export default Dashboard;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+});
