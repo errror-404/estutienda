@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 8,
     marginVertical: 16,
-    marginLeft: 8,
+    marginRight: 6,
     maxHeight: 36,
   },
   titlle: {
