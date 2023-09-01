@@ -12,17 +12,22 @@ const Dashboard = () => {
   const mockedItem: Dish[] = [
     {
       id: 1,
+      image:
+        "https://chedrauimx.vtexassets.com/arquivos/ids/16650816-800-auto?v=638253929464470000&width=800&height=auto&aspect=true",
       title: "Articulo 1",
       description: "descripcion",
       price: 100,
     },
     {
       id: 2,
-      title: "Articulo 1",
-      description: "descripcion",
+      image:
+        "https://chedrauimx.vtexassets.com/arquivos/ids/16650816-800-auto?v=638253929464470000&width=800&height=auto&aspect=true",
+      title: "Articulo 2",
+      description: "descripcion 2",
       price: 200,
     },
   ];
+
   return (
     <View style={styles.container}>
       <FlatList
