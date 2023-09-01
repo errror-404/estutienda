@@ -1,27 +1,48 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
 import CustomTextInput from "../components/CustomTextInput";
 import { RoutesProps } from "../utils/types/Navigatetype";
+import { auth, signInWithEmailAndPassword } from "../firebaseConfig";
 
-const Login = () => {
-  const navigationsesion = useNavigation<RoutesProps>();
+export default function Login() {
   const navigation = useNavigation<RoutesProps>();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const iniciosesion = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigation.navigate("HomeStack");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}>Iniciar Sesion</Text>
         <View>
-          <CustomTextInput placeholder="Correo electronico" />
-          <CustomTextInput placeholder="Contraseña" />
+          <CustomTextInput
+            onChangeText={(text) => setEmail(text)}
+            placeholder="Correo electronico"
+          />
+          <CustomTextInput
+            onChangeText={(text) => setPassword(text)}
+            placeholder="Contraseña"
+          />
           <CustomButton title="¿Olvidaste tu contraseña?" variant="link" />
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
             title="Iniciar sesion"
             variant="outlined"
-            onPress={() => navigationsesion.navigate("HomeStack")}
+            onPress={() => iniciosesion()}
           />
           <CustomButton
             title="Registrarse"
@@ -32,9 +53,7 @@ const Login = () => {
       </View>
     </View>
   );
-};
-
-export default Login;
+}
 
 const styles = StyleSheet.create({
   container: {
