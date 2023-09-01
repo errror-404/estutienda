@@ -4,9 +4,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../firebaseConfig";
 
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCcC23C6-oaQ8LQFUOtO6UbKXF3rY4r_jQ",
   authDomain: "pruebawt-defd3.firebaseapp.com",
   projectId: "pruebawt-defd3",
