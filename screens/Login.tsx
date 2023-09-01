@@ -11,10 +11,9 @@ export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const iniciosesion = () => {
+  const iniciosesion = async () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then(() => {
         navigation.navigate("HomeStack");
       })
       .catch((error) => {
@@ -29,7 +28,7 @@ export default function Login() {
         <Text style={styles.title}>Iniciar Sesion</Text>
         <View>
           <CustomTextInput
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(value) => setEmail(value)}
             placeholder="Correo electronico"
           />
           <CustomTextInput

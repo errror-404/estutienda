@@ -6,8 +6,10 @@ interface CustomTextInputProps extends TextInputProps {
   placeholder: string;
 }
 
-const CustomTextInput = ({ placeholder }: CustomTextInputProps) => {
-  return <TextInput style={styles.textInput} placeholder={placeholder} />;
+const CustomTextInput = ({ placeholder, ...rest }: CustomTextInputProps) => {
+  return (
+    <TextInput style={styles.textInput} placeholder={placeholder} {...rest} />
+  );
 };
 
 export default CustomTextInput;

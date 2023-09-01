@@ -3,6 +3,7 @@ import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Navigation } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Props = NativeStackScreenProps<Navigation, "DishDetail">;
 
@@ -23,7 +24,11 @@ const DishDetail = ({ route }: Props) => {
       <Text>{dish.description}</Text>
       <Text>{dish.price}</Text>
       <View>
-        <CustomButton title="Agregar" variant="filled" />
+        <CustomButton
+          title="Agregar"
+          variant="filled"
+          onPress={() => AsyncStorage.removeItem("isLoggedIn")}
+        />
       </View>
     </View>
   );
