@@ -4,7 +4,6 @@ import AuthNavigation from "./AuthNavigation";
 import DashboardNavigation from "./DashboardNavigation";
 
 const MainStack = createNativeStackNavigator();
-
 const MainNavigation = () => {
   const isLoggedIn = true;
   return (
