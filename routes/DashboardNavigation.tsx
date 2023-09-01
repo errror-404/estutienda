@@ -7,10 +7,10 @@ import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 import Orders from "../screens/Orders";
 import { useNavigation } from "@react-navigation/native";
-import { RoutesProps } from "../utils/types/Navigatetype";
+import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 
-const HomeStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator<Navigation>();
 
 const DashboardNavigation = () => {
   const navigation = useNavigation<RoutesProps>();
@@ -35,7 +35,6 @@ const DashboardNavigation = () => {
     </HomeStack.Navigator>
   );
 };
-
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
