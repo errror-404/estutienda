@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
@@ -17,15 +17,22 @@ export default function Login() {
         navigation.navigate("HomeStack");
       })
       .catch((error) => {
+        const errorcode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        console.log(errorcode);
+        errorcode === "auth/invalid-email"
+          ? Alert.alert("Invalid User", "Contraseña o usario invalido", [
+              { text: "OK", onPress: () => console.log("OK Pressed") },
+            ])
+          : console.log();
       });
   };
 
   return (
     <View style={styles.container}>
+      <View style={styles.container2}></View>
       <View style={styles.card}>
-        <Text style={styles.title}>Iniciar Sesion</Text>
+        <Text style={styles.title}>Logo</Text>
         <View>
           <CustomTextInput
             onChangeText={(value) => setEmail(value)}
@@ -34,6 +41,7 @@ export default function Login() {
           <CustomTextInput
             onChangeText={(text) => setPassword(text)}
             placeholder="Contraseña"
+            secureTextEntry
           />
           <CustomButton title="¿Olvidaste tu contraseña?" variant="link" />
         </View>
@@ -57,21 +65,32 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#92C5FC",
     justifyContent: "center",
     alignItems: "center",
   },
+  container2: {
+    justifyContent: "flex-end",
+  },
+
   card: {
     flex: 1,
+    backgroundColor: "#fff",
     justifyContent: "space-evenly",
     alignItems: "center",
-    maxHeight: 500,
+    top: 180,
+    width: 425,
+    borderRadius: 45,
   },
   title: {
+    margin: 80,
     fontSize: 18,
     marginBottom: 12,
   },
-
+  text: {
+    fontSize: 18,
+    marginBottom: 12,
+  },
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
