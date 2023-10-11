@@ -30,6 +30,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title2}>Sign in</Text>
       <View style={styles.container2}></View>
       <View style={styles.card}>
         <Text style={styles.title}>Logo</Text>
@@ -66,8 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#92C5FC",
-    justifyContent: "center",
-    alignItems: "center",
+    textAlign: "left",
   },
   container2: {
     justifyContent: "flex-end",
@@ -86,6 +86,12 @@ const styles = StyleSheet.create({
     margin: 80,
     fontSize: 18,
     marginBottom: 12,
+  },
+  title2: {
+    margin: 20,
+    fontSize: 28,
+    top: 180,
+    fontWeight: "bold",
   },
   text: {
     fontSize: 18,
