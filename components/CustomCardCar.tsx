@@ -13,7 +13,7 @@ interface CustomCardProps extends TouchableOpacityProps {
   dish?: Dish;
 }
 
-const CustomCard = ({ dish, ...rest }: CustomCardProps) => {
+const CustomCardCar = ({ dish, ...rest }: CustomCardProps) => {
   return (
     <TouchableOpacity style={styles.container} {...rest}>
       <Image
@@ -30,7 +30,7 @@ const CustomCard = ({ dish, ...rest }: CustomCardProps) => {
   );
 };
 
-export default CustomCard;
+export default CustomCardCar;
 
 const styles = StyleSheet.create({
   container: {

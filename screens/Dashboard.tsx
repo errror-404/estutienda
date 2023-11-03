@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomCard from "../components/CustomCard";
 import { Dish } from "../utils/types/Dish";
@@ -32,10 +32,12 @@ const Dashboard = () => {
     <View style={styles.container}>
       <FlatList
         renderItem={({ item }) => (
-          <CustomCard
-            dish={item}
-            onPress={() => navigation.navigate("DishDetail", { dish: item })}
-          />
+          <>
+            <CustomCard
+              dish={item}
+              onPress={() => navigation.navigate("DishDetail", { dish: item })}
+            />
+          </>
         )}
         data={mockedItem}
         numColumns={2}

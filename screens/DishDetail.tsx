@@ -1,18 +1,36 @@
 import { Text, View, Image, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Navigation } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import UseProduct from "../hooks/UseProduct";
 
 type Props = NativeStackScreenProps<Navigation, "DishDetail">;
 
 const DishDetail = ({ route }: Props) => {
   const { dish } = route.params;
+  const { Agregar } = UseProduct();
 
   return (
     <View style={styles.container}>
-      <View>
+      <Text
+        style={{
+          fontSize: 23,
+          fontWeight: "bold",
+          textAlign: "center",
+          margin: 30,
+        }}
+      >
+        {" "}
+        Detalles del producto
+      </Text>
+      <View
+        style={{
+          alignContent: "center",
+          alignItems: "center",
+          paddingBottom: 40,
+        }}
+      >
         <Image
           source={{
             uri: dish.image,
@@ -20,14 +38,14 @@ const DishDetail = ({ route }: Props) => {
           style={styles.image}
         />
       </View>
-      <Text style={styles.title}>{dish.title}</Text>
-      <Text>{dish.description}</Text>
-      <Text>{dish.price}</Text>
-      <View>
+
+      <View style={{ margin: 16 }}>
+        <Text style={styles.title}>{dish.title}</Text>
+        <Text>${dish.price}</Text>
         <CustomButton
           title="Agregar"
           variant="filled"
-          onPress={() => AsyncStorage.removeItem("isLoggedIn")}
+          onPress={() => Agregar(dish)}
         />
       </View>
     </View>
@@ -40,7 +58,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   image: {
-    height: 300,
+    height: 180,
+    width: 380,
+    borderRadius: 20,
   },
   title: {
     fontSize: 24,

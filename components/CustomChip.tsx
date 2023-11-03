@@ -22,14 +22,13 @@ export default CustomChip;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "black",
-    borderWidth: 1,
-    maxWidth: 100,
-    borderRadius: 6,
+    height: 90,
+    width: 90,
+    borderRadius: 60,
     padding: 8,
     marginVertical: 16,
-    marginRight: 6,
-    maxHeight: 36,
+    marginRight: 20,
+    backgroundColor: "#BDBDBD",
   },
   titlle: {
     textAlign: "center",

@@ -9,30 +9,33 @@ import Orders from "../screens/Orders";
 import { useNavigation } from "@react-navigation/native";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
+import StoreProvider from "../store/StoreProvider";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
 const DashboardNavigation = () => {
   const navigation = useNavigation<RoutesProps>();
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        name="Home"
-        component={Dashboard}
-        options={{
-          headerRight: () => (
-            <AntDesign
-              name="shoppingcart"
-              size={24}
-              color="black"
-              onPress={() => navigation.navigate("Cart")}
-            />
-          ),
-        }}
-      />
-      <HomeStack.Screen name="Cart" component={Cart} />
-      <HomeStack.Screen name="DishDetail" component={DishDetail} />
-    </HomeStack.Navigator>
+    <StoreProvider>
+      <HomeStack.Navigator>
+        <HomeStack.Screen
+          name="Home"
+          component={Dashboard}
+          options={{
+            headerRight: () => (
+              <AntDesign
+                name="shoppingcart"
+                size={24}
+                color="black"
+                onPress={() => navigation.navigate("Cart")}
+              />
+            ),
+          }}
+        />
+        <HomeStack.Screen name="Cart" component={Cart} />
+        <HomeStack.Screen name="DishDetail" component={DishDetail} />
+      </HomeStack.Navigator>
+    </StoreProvider>
   );
 };
 const Tab = createBottomTabNavigator();
