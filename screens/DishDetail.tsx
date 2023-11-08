@@ -9,8 +9,8 @@ type Props = NativeStackScreenProps<Navigation, "DishDetail">;
 
 const DishDetail = ({ route }: Props) => {
   const { dish } = route.params;
-  const { Agregar } = UseProduct();
-
+  const { Agregar, products } = UseProduct();
+  console.log(products);
   return (
     <View style={styles.container}>
       <Text

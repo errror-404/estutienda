@@ -3,12 +3,12 @@ import { StoreContext } from "../store/StoreProvider";
 import { Dish } from "../utils/types/Dish";
 
 const UseProduct = () => {
-  const { productState, Agregar } = useContext(StoreContext);
+  const { productState, Agregar, Eliminar } = useContext(StoreContext);
   const { products } = productState;
-
   return {
     products: products,
     Agregar,
+    Eliminar,
   };
 };
 

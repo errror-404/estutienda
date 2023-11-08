@@ -10,6 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
+import { Header } from "@react-navigation/stack";
+import { ScreenStackHeaderLeftView } from "react-native-screens";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
@@ -32,7 +34,13 @@ const DashboardNavigation = () => {
             ),
           }}
         />
-        <HomeStack.Screen name="Cart" component={Cart} />
+        <HomeStack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Cart"
+          component={Cart}
+        />
         <HomeStack.Screen name="DishDetail" component={DishDetail} />
       </HomeStack.Navigator>
     </StoreProvider>

@@ -1,4 +1,4 @@
-import { FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet, Text } from "react-native";
 import React, { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import CustomCardCar from "../components/CustomCardCar";
@@ -9,6 +9,17 @@ const Cart = () => {
 
   return (
     <View style={styles.container}>
+      <Text
+        style={{
+          fontSize: 23,
+          fontWeight: "bold",
+          textAlign: "center",
+          margin: 30,
+        }}
+      >
+        {" "}
+        Carrito
+      </Text>
       <FlatList
         renderItem={({ item }) => (
           <>
@@ -16,7 +27,6 @@ const Cart = () => {
           </>
         )}
         data={productState.products}
-        numColumns={2}
       />
     </View>
   );
@@ -24,7 +34,9 @@ const Cart = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
+    padding: 30,
+    flex: 1,
+    backgroundColor: "white",
   },
   subtitle: {
     padding: 8,

@@ -22,6 +22,7 @@ const Dashboard = () => {
         price: doc.data().scoops,
         id: doc.id,
         image: doc.data().image,
+        units: 1,
       }));
       Setsuplement(data);
     });
