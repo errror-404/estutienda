@@ -14,14 +14,11 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         alert("User creado");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
         errorCode === "auth/weak-password"
           ? Alert.alert("Password", "Ingrese minimo 6 caracteres", [
               { text: "OK", onPress: () => console.log("OK Pressed") },
@@ -30,7 +27,7 @@ const Register = () => {
           ? Alert.alert("User", "El correo ya esta registrado en una cuenta", [
               { text: "OK", onPress: () => console.log("OK Pressed") },
             ])
-          : console.log();
+          : null;
       });
   };
   return (

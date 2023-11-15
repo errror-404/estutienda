@@ -14,7 +14,7 @@ export const StoreReducer = (
         (item) => item.id === action.paylod.id
       );
 
-      i >= 0 ? (state.products[i].units += 1) : console.log("hi");
+      i >= 0 ? (state.products[i].units += 1) : null;
 
       return {
         ...state,

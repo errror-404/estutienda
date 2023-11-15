@@ -1,16 +1,23 @@
 import { Text, View, Image, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Navigation } from "../utils/types/Navigatetype";
+import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
 import UseProduct from "../hooks/UseProduct";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<Navigation, "DishDetail">;
 
 const DishDetail = ({ route }: Props) => {
   const { dish } = route.params;
-  const { Agregar, products } = UseProduct();
-  console.log(products);
+  const navigation = useNavigation<RoutesProps>();
+  const { Agregar } = UseProduct();
+
+  const agregarProducto = () => {
+    Agregar(dish)
+    navigation.navigate('Cart')
+  }
+
   return (
     <View style={styles.container}>
       <Text
@@ -45,7 +52,7 @@ const DishDetail = ({ route }: Props) => {
         <CustomButton
           title="Agregar"
           variant="filled"
-          onPress={() => Agregar(dish)}
+          onPress={() => agregarProducto() }
         />
       </View>
     </View>

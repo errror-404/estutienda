@@ -12,16 +12,17 @@ const DashboardHeader = () => {
   ];
   return (
     <View style={styles.container}>
-      <Text style={{ ...styles.subtitle, paddingBottom: 0 }}>Categorias</Text>
+      <Text style={styles.title}>Categorias</Text>
       <FlatList
         data={mockedArray}
         renderItem={({ item }) => (
           <CustomChip title={item.name} image={item.imagen} />
         )}
+        
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-      <Text style={styles.subtitle}>Favoritos</Text>
+      <Text style={styles.title}>Favoritos</Text>
     </View>
   );
 };
@@ -30,11 +31,13 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
   },
-  subtitle: {
+  title:{
+    marginVertical: 16,
     padding: 8,
-    paddingBottom: 20,
     fontSize: 18,
+    fontWeight: "bold",
   },
+
 });
 
 export default DashboardHeader;
