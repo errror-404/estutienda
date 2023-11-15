@@ -34,7 +34,7 @@ export default function Login() {
       <View style={styles.container2}></View>
       <View style={styles.card}>
         <Text style={styles.title}>Logo</Text>
-        <View>
+        <View style={styles.textInputContainers}>
           <CustomTextInput
             onChangeText={(value) => setEmail(value)}
             placeholder="Correo electronico"
@@ -43,8 +43,9 @@ export default function Login() {
             onChangeText={(text) => setPassword(text)}
             placeholder="Contraseña"
             secureTextEntry
+
           />
-          <CustomButton title="¿Olvidaste tu contraseña?" variant="link" />
+          <CustomButton title="¿Olvidaste tu contraseña?" variant="link" style={styles.link}/>
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
@@ -72,7 +73,10 @@ const styles = StyleSheet.create({
   container2: {
     justifyContent: "flex-end",
   },
-
+  textInputContainers:{
+    marginVertical: 24,
+   
+  },
   card: {
     flex: 1,
     backgroundColor: "#fff",
@@ -100,5 +104,12 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
+    marginVertical:12
   },
+  link:{
+    marginTop:24
+  },
+  textInput:{
+    
+  }
 });

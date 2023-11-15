@@ -4,8 +4,10 @@ import { auth, createUserWithEmailAndPassword } from "../firebaseConfig";
 import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
 import { Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Register = () => {
+  const navigation = useNavigation()
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const createuser = () => {
@@ -33,7 +35,7 @@ const Register = () => {
   };
   return (
     <View style={styles.container}>
-      <CustomButton title="<" variant="filled" onPress={() => {}} />
+      <CustomButton title="<" variant="filled" onPress={() => navigation.goBack()} />
       <CustomTextInput
         onChangeText={(value) => setEmail(value)}
         placeholder="Correo electronico"
