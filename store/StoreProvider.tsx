@@ -22,7 +22,6 @@ interface Props {
 }
 const StoreProvider = ({ children }: Props) => {
   const [productState, dispatch] = useReducer(StoreReducer, initial);
-  console.log(initial + "s");
   const Agregar = (nuevo: Dish) => {
     dispatch({
       type: "AddProduct",

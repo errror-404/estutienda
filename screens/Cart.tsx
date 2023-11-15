@@ -5,7 +5,6 @@ import CustomCardCar from "../components/CustomCardCar";
 
 const Cart = () => {
   const { productState } = useContext(StoreContext);
-  console.log(productState.products);
 
   return (
     <View style={styles.container}>

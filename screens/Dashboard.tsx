@@ -7,7 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 import { RoutesProps } from "../utils/types/Navigatetype";
 import { database } from "../firebaseConfig";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+
+
 const Dashboard = () => {
+  
   const navigation = useNavigation<RoutesProps>();
   const [mockedItem, Setsuplement] = useState<Dish[]>();
 

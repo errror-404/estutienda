@@ -10,8 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
-import { Header } from "@react-navigation/stack";
-import { ScreenStackHeaderLeftView } from "react-native-screens";
+import { StyleSheet } from "react-native";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
@@ -29,6 +28,7 @@ const DashboardNavigation = () => {
                 name="shoppingcart"
                 size={24}
                 color="black"
+                style={ styles.navbarIcon}
                 onPress={() => navigation.navigate("Cart")}
               />
             ),
@@ -61,5 +61,13 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
+
+const styles = StyleSheet.create({
+  navbarIcon: {
+  marginRight:12
+
+  }
+})
 
 export default TabNavigator;
