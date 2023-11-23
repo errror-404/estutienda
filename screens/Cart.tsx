@@ -1,9 +1,19 @@
-import { FlatList, View, StyleSheet, Text } from "react-native";
+import {
+  FlatList,
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import React, { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import CustomCardCar from "../components/CustomCardCar";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Navigation } from "../utils/types/Navigatetype";
+import CustomButton from "../components/CustomButton";
+type Props = NativeStackScreenProps<Navigation, "Cart">;
 
-const Cart = () => {
+const Cart = ({ route }: Props) => {
   const { productState } = useContext(StoreContext);
 
   return (
@@ -27,6 +37,9 @@ const Cart = () => {
         )}
         data={productState.products}
       />
+      <View>
+        <CustomButton title="Continuar" variant="filled" onPress={() => {}} />
+      </View>
     </View>
   );
 };

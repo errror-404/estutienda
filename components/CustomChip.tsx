@@ -16,22 +16,21 @@ interface CustomChipProps extends TouchableOpacityProps {
 
 const CustomChip = ({ title, image }: CustomChipProps) => {
   return (
-    <TouchableOpacity style={styles.container} >
+    <TouchableOpacity style={styles.container}>
       <View style={styles.contentContainer}>
-      <Image style={styles.image} source={image} />
+        <Image style={styles.image} source={image} />
       </View>
       <Text style={styles.titlle}>{title}</Text>
     </TouchableOpacity>
-
   );
 };
 
 export default CustomChip;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    marginRight:12, 
+  container: {
+    flex: 1,
+    marginRight: 12,
   },
   contentContainer: {
     height: 90,
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
   },
   image: {
     resizeMode: "contain",
-    width:40 ,
-    height:40
+    width: 40,
+    height: 40,
   },
 });

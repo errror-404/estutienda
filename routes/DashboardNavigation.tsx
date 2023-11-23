@@ -1,5 +1,8 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import Dashboard from "../screens/Dashboard";
@@ -11,11 +14,14 @@ import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
 import { StyleSheet } from "react-native";
+import DashDishes from "../screens/DashDishes";
+import { getAuth } from "firebase/auth";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
 const DashboardNavigation = () => {
   const navigation = useNavigation<RoutesProps>();
+
   return (
     <StoreProvider>
       <HomeStack.Navigator>
@@ -28,8 +34,47 @@ const DashboardNavigation = () => {
                 name="shoppingcart"
                 size={24}
                 color="black"
-                style={ styles.navbarIcon}
-                onPress={() => navigation.navigate("Cart")}
+                style={styles.navbarIcon}
+                onPress={() =>
+                  getAuth()
+                    .currentUser?.getIdTokenResult()
+                    .then((idTokenResult) => {
+                      console.log(idTokenResult.claims.sub);
+                      navigation.navigate("Cart", {
+                        userid: idTokenResult.claims.sub,
+                      });
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    })
+                }
+              />
+            ),
+          }}
+        />
+        <HomeStack.Screen
+          name="Dishes"
+          component={DashDishes}
+          options={{
+            headerRight: () => (
+              <AntDesign
+                name="shoppingcart"
+                size={24}
+                color="black"
+                style={styles.navbarIcon}
+                onPress={() =>
+                  getAuth()
+                    .currentUser?.getIdTokenResult()
+                    .then((idTokenResult) => {
+                      console.log(idTokenResult.claims.sub);
+                      navigation.navigate("Cart", {
+                        userid: idTokenResult.claims.sub,
+                      });
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    })
+                }
               />
             ),
           }}
@@ -62,12 +107,10 @@ const TabNavigator = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   navbarIcon: {
-  marginRight:12
-
-  }
-})
+    marginRight: 12,
+  },
+});
 
 export default TabNavigator;

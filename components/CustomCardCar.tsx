@@ -16,7 +16,7 @@ interface CustomCardProps extends TouchableOpacityProps {
 }
 
 const CustomCardCar = ({ dish, ...rest }: CustomCardProps) => {
-  const { Agregar, products, Eliminar } = UseProduct();
+  const { Agregar, Eliminar } = UseProduct();
 
   return (
     <TouchableOpacity style={styles.container} {...rest}>
