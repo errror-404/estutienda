@@ -19,7 +19,7 @@ const CustomCardCar = ({ dish, ...rest }: CustomCardProps) => {
   const { Agregar, Eliminar } = UseProduct();
 
   return (
-    <TouchableOpacity style={styles.container} {...rest}>
+    <View style={styles.container}>
       <View>
         <Image
           source={{
@@ -44,7 +44,7 @@ const CustomCardCar = ({ dish, ...rest }: CustomCardProps) => {
           </TouchableOpacity>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

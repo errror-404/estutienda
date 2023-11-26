@@ -14,11 +14,8 @@ export interface Restaurtants {
 }
 export interface User {
   id: string;
-  image: string;
-  title: string;
-  price: number;
-  description: string;
-  units: number;
+  name: string;
+  email: string;
 }
 export interface Basket {
   units: number;

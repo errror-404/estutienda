@@ -25,7 +25,9 @@ const CustomButton = ({ title, variant, ...rest }: CustomButtonProps) => {
     </TouchableOpacity>
   ) : (
     <TouchableOpacity style={styles.linkContainer} {...rest}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={title == "< Back" ? styles.title2 : styles.title}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -48,5 +50,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     textAlign: "center",
+    color: "#1f6feb",
+  },
+  title2: {
+    fontSize: 18,
+    color: "black",
   },
 });

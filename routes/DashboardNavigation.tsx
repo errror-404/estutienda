@@ -35,19 +35,9 @@ const DashboardNavigation = () => {
                 size={24}
                 color="black"
                 style={styles.navbarIcon}
-                onPress={() =>
-                  getAuth()
-                    .currentUser?.getIdTokenResult()
-                    .then((idTokenResult) => {
-                      console.log(idTokenResult.claims.sub);
-                      navigation.navigate("Cart", {
-                        userid: idTokenResult.claims.sub,
-                      });
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                    })
-                }
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
               />
             ),
           }}
@@ -62,19 +52,9 @@ const DashboardNavigation = () => {
                 size={24}
                 color="black"
                 style={styles.navbarIcon}
-                onPress={() =>
-                  getAuth()
-                    .currentUser?.getIdTokenResult()
-                    .then((idTokenResult) => {
-                      console.log(idTokenResult.claims.sub);
-                      navigation.navigate("Cart", {
-                        userid: idTokenResult.claims.sub,
-                      });
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                    })
-                }
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
               />
             ),
           }}
@@ -102,7 +82,11 @@ const TabNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen name="Orders" component={Orders} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };

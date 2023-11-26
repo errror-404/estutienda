@@ -11,13 +11,22 @@ import CustomCardCar from "../components/CustomCardCar";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Navigation } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 type Props = NativeStackScreenProps<Navigation, "Cart">;
 
 const Cart = ({ route }: Props) => {
   const { productState } = useContext(StoreContext);
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+      <View style={{ left: 20, top: 50 }}>
+        <CustomButton
+          title="< Back"
+          variant="link"
+          onPress={() => navigation.goBack()}
+        />
+      </View>
       <Text
         style={{
           fontSize: 23,
@@ -29,6 +38,7 @@ const Cart = ({ route }: Props) => {
         {" "}
         Carrito
       </Text>
+
       <FlatList
         renderItem={({ item }) => (
           <>
@@ -37,7 +47,9 @@ const Cart = ({ route }: Props) => {
         )}
         data={productState.products}
       />
-      <View>
+      <View
+        style={{ justifyContent: "center", alignItems: "center", bottom: 10 }}
+      >
         <CustomButton title="Continuar" variant="filled" onPress={() => {}} />
       </View>
     </View>
@@ -46,7 +58,6 @@ const Cart = ({ route }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 30,
     flex: 1,
     backgroundColor: "white",
   },
