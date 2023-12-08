@@ -9,22 +9,36 @@ import React from "react";
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
   variant: "outlined" | "filled" | "link";
+  size?: "small" | "large";
 }
 
-const CustomButton = ({ title, variant, ...rest }: CustomButtonProps) => {
+const CustomButton = ({ title, variant, size, ...rest }: CustomButtonProps) => {
   return variant === "outlined" ? (
-    <TouchableOpacity style={styles.container} {...rest}>
+    <TouchableOpacity
+      style={{ ...styles.container, width: size === "small" ? 150 : "100%" }}
+      {...rest}
+    >
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   ) : variant === "filled" ? (
     <TouchableOpacity
-      style={{ ...styles.container, backgroundColor: "black" }}
+      style={{
+        ...styles.container,
+        backgroundColor: "black",
+        width: size === "small" ? 150 : "100%",
+      }}
       {...rest}
     >
       <Text style={styles.titleFilled}>{title}</Text>
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity style={styles.linkContainer} {...rest}>
+    <TouchableOpacity
+      style={{
+        ...styles.linkContainer,
+        width: size === "small" ? 150 : "100%",
+      }}
+      {...rest}
+    >
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
@@ -37,7 +51,6 @@ const styles = StyleSheet.create({
     padding: 8,
     borderColor: "#000",
     borderWidth: 1,
-    width: 150,
     borderRadius: 6,
     margin: 10,
     height: 40,

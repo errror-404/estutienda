@@ -6,6 +6,7 @@ export type Navigation = {
   HomeStack: undefined;
   Register: undefined;
   Cart: undefined;
+  PaymentScreen: undefined;
   DishDetail: {
     dish: Dish;
   };

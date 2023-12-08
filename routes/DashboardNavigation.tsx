@@ -11,6 +11,7 @@ import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
 import { StyleSheet } from "react-native";
+import PaymentScreen from "../screens/PaymentScreen";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
@@ -28,7 +29,7 @@ const DashboardNavigation = () => {
                 name="shoppingcart"
                 size={24}
                 color="black"
-                style={ styles.navbarIcon}
+                style={styles.navbarIcon}
                 onPress={() => navigation.navigate("Cart")}
               />
             ),
@@ -36,12 +37,13 @@ const DashboardNavigation = () => {
         />
         <HomeStack.Screen
           options={{
-            headerShown: false,
+            headerTitle: "Canasta",
           }}
           name="Cart"
           component={Cart}
         />
         <HomeStack.Screen name="DishDetail" component={DishDetail} />
+        <HomeStack.Screen name="PaymentScreen" component={PaymentScreen} />
       </HomeStack.Navigator>
     </StoreProvider>
   );
@@ -62,12 +64,10 @@ const TabNavigator = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   navbarIcon: {
-  marginRight:12
-
-  }
-})
+    marginRight: 12,
+  },
+});
 
 export default TabNavigator;
