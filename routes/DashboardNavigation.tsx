@@ -1,16 +1,16 @@
 import React from "react";
+import { StyleSheet, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import Dashboard from "../screens/Dashboard";
 import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 import Orders from "../screens/Orders";
-import { useNavigation } from "@react-navigation/native";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
-import { StyleSheet } from "react-native";
 import PaymentScreen from "../screens/PaymentScreen";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
@@ -25,13 +25,15 @@ const DashboardNavigation = () => {
           component={Dashboard}
           options={{
             headerRight: () => (
-              <AntDesign
-                name="shoppingcart"
-                size={24}
-                color="black"
-                style={styles.navbarIcon}
-                onPress={() => navigation.navigate("Cart")}
-              />
+              <View>
+                <AntDesign
+                  name="shoppingcart"
+                  size={24}
+                  color="black"
+                  style={styles.navbarIcon}
+                  onPress={() => navigation.navigate("Cart")}
+                />
+              </View>
             ),
           }}
         />

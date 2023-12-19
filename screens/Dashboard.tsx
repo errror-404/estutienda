@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomCard from "../components/CustomCard";
 import { Dish } from "../utils/types/Dish";

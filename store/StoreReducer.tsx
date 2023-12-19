@@ -1,5 +1,6 @@
 import { ProductState } from "../interfaces/interfaces";
 import { Dish } from "../utils/types/Dish";
+
 type ProductAction =
   | { type: "AddProduct"; paylod: Dish }
   | { type: "Delete"; paylod: Dish };
@@ -10,6 +11,7 @@ export const StoreReducer = (
 ): ProductState => {
   switch (action.type) {
     case "AddProduct":
+      // eslint-disable-next-line no-case-declarations
       const i = state.products.findIndex(
         (item) => item.id === action.paylod.id
       );
@@ -23,6 +25,7 @@ export const StoreReducer = (
       };
 
     case "Delete":
+      // eslint-disable-next-line no-case-declarations
       const d = state.products.findIndex(
         (item) => item.id === action.paylod.id
       );

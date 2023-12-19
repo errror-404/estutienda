@@ -9,9 +9,7 @@ const Logout = () => {
     .then(() => {
       // Sign-out successful.
     })
-    .catch((error) => {
-      // An error happened.
-    });
+    .catch(() => {});
 };
 const Profile = () => {
   return (

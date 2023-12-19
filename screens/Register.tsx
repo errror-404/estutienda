@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { auth, createUserWithEmailAndPassword } from "../firebaseConfig";
 import CustomTextInput from "../components/CustomTextInput";
@@ -7,18 +7,17 @@ import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Register = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
   const createuser = () => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then(() => {
         alert("User creado");
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         errorCode === "auth/weak-password"
           ? Alert.alert("Password", "Ingrese minimo 6 caracteres", [
               { text: "OK", onPress: () => console.log("OK Pressed") },
@@ -30,9 +29,14 @@ const Register = () => {
           : null;
       });
   };
+
   return (
     <View style={styles.container}>
-      <CustomButton title="<" variant="filled" onPress={() => navigation.goBack()} />
+      <CustomButton
+        title="<"
+        variant="filled"
+        onPress={() => navigation.goBack()}
+      />
       <CustomTextInput
         onChangeText={(value) => setEmail(value)}
         placeholder="Correo electronico"

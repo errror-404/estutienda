@@ -1,5 +1,5 @@
 import { Text, View, Image, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
@@ -14,9 +14,9 @@ const DishDetail = ({ route }: Props) => {
   const { Agregar } = UseProduct();
 
   const agregarProducto = () => {
-    Agregar(dish)
-    navigation.navigate('Cart')
-  }
+    Agregar(dish);
+    navigation.navigate("Cart");
+  };
 
   return (
     <View style={styles.container}>
@@ -52,7 +52,7 @@ const DishDetail = ({ route }: Props) => {
         <CustomButton
           title="Agregar"
           variant="filled"
-          onPress={() => agregarProducto() }
+          onPress={() => agregarProducto()}
         />
       </View>
     </View>

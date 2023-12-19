@@ -18,8 +18,6 @@ export default function Login() {
       })
       .catch((error) => {
         const errorcode = error.code;
-        const errorMessage = error.message;
-        console.log(errorcode);
         errorcode === "auth/invalid-email"
           ? Alert.alert("Invalid User", "Contraseña o usario invalido", [
               { text: "OK", onPress: () => console.log("OK Pressed") },
@@ -43,9 +41,12 @@ export default function Login() {
             onChangeText={(text) => setPassword(text)}
             placeholder="Contraseña"
             secureTextEntry
-
           />
-          <CustomButton title="¿Olvidaste tu contraseña?" variant="link" style={styles.link}/>
+          <CustomButton
+            title="¿Olvidaste tu contraseña?"
+            variant="link"
+            style={styles.link}
+          />
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
@@ -73,9 +74,8 @@ const styles = StyleSheet.create({
   container2: {
     justifyContent: "flex-end",
   },
-  textInputContainers:{
+  textInputContainers: {
     marginVertical: 24,
-   
   },
   card: {
     flex: 1,
@@ -104,12 +104,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    marginVertical:12
+    marginVertical: 12,
   },
-  link:{
-    marginTop:24
+  link: {
+    marginTop: 24,
   },
-  textInput:{
-    
-  }
+  textInput: {},
 });
