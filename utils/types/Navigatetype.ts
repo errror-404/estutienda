@@ -1,8 +1,9 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Dish } from "./Dish";
+import { Dish, Restaurtants } from "./Dish";
 
 export type Navigation = {
   Home: undefined;
+  Dishes: { Restaurant: Restaurtants };
   HomeStack: undefined;
   Register: undefined;
   Cart: undefined;

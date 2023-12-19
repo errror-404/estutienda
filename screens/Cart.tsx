@@ -1,18 +1,38 @@
 import { FlatList, View, StyleSheet, Text } from "react-native";
 import React, { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
-import CustomCardCard from "../components/CustomCardCart";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import CustomCardCard from "../components/CustomCardCart";
 import { RoutesProps } from "../utils/types/Navigatetype";
 
 const Cart = () => {
   const { productState } = useContext(StoreContext);
+  const navigation = useNavigation();
 
   const { navigate } = useNavigation<RoutesProps>();
 
   return (
     <View style={styles.container}>
+      <View style={{ left: 20, top: 50 }}>
+        <CustomButton
+          title="< Back"
+          variant="link"
+          onPress={() => navigation.goBack()}
+        />
+      </View>
+      <Text
+        style={{
+          fontSize: 23,
+          fontWeight: "bold",
+          textAlign: "center",
+          margin: 30,
+        }}
+      >
+        {" "}
+        Carrito
+      </Text>
+
       <FlatList
         renderItem={({ item }) => <CustomCardCard dish={item} />}
         data={productState.products}
@@ -35,6 +55,11 @@ const Cart = () => {
           </>
         )}
       />
+      <View
+        style={{ justifyContent: "center", alignItems: "center", bottom: 10 }}
+      >
+        <CustomButton title="Continuar" variant="filled" onPress={() => {}} />
+      </View>
     </View>
   );
 };

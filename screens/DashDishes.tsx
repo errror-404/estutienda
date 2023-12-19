@@ -1,26 +1,30 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Restaurtants } from "../utils/types/Dish";
+import CustomCard from "../components/CustomCard";
+import { Dish } from "../utils/types/Dish";
 import DashboardHeader from "../components/DashboardHeader";
 import { useNavigation } from "@react-navigation/native";
 import { RoutesProps } from "../utils/types/Navigatetype";
 import { database } from "../firebaseConfig";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import CustomCardRestaurants from "../components/CustomCardRestaurants";
 
-const Dashboard = () => {
+const DashDishes = () => {
   const navigation = useNavigation<RoutesProps>();
-  const [Restaurants, Setsuplement] = useState<Restaurtants[]>();
+  const [mockedItem, Setsuplement] = useState<Dish[]>();
 
   useEffect(() => {
-    const collectref = collection(database, "/restaurants");
+    const collectref = collection(database, "/supplements");
     const q = query(collectref, orderBy("name", "desc"));
 
     const unscribe = onSnapshot(q, (querySnapshot) => {
-      const data: Restaurtants[] = querySnapshot.docs.map((doc) => ({
-        restid: doc.id,
-        name: doc.data().name,
+      const data: Dish[] = querySnapshot.docs.map((doc) => ({
+        description: doc.data().category,
+        title: doc.data().name,
+        price: doc.data().scoops,
+        id: doc.id,
         image: doc.data().image,
+        units: 1,
+        idrestaurant: doc.data().idrestaurant,
       }));
       Setsuplement(data);
     });
@@ -32,27 +36,25 @@ const Dashboard = () => {
       <FlatList
         renderItem={({ item }) => (
           <>
-            <CustomCardRestaurants
+            <CustomCard
               dish={item}
-              onPress={() =>
-                navigation.navigate("Dishes", { Restaurant: item })
-              }
+              onPress={() => navigation.navigate("DishDetail", { dish: item })}
             />
           </>
         )}
-        data={Restaurants}
-        numColumns={1}
+        data={mockedItem}
+        numColumns={2}
         ListHeaderComponent={() => <DashboardHeader />}
       />
     </View>
   );
 };
 
-export default Dashboard;
+export default DashDishes;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFfe",
+    backgroundColor: "white",
   },
 });

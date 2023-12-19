@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
@@ -11,12 +11,14 @@ import Orders from "../screens/Orders";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
+import DashDishes from "../screens/DashDishes";
 import PaymentScreen from "../screens/PaymentScreen";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
 const DashboardNavigation = () => {
   const navigation = useNavigation<RoutesProps>();
+
   return (
     <StoreProvider>
       <HomeStack.Navigator>
@@ -25,15 +27,32 @@ const DashboardNavigation = () => {
           component={Dashboard}
           options={{
             headerRight: () => (
-              <View>
-                <AntDesign
-                  name="shoppingcart"
-                  size={24}
-                  color="black"
-                  style={styles.navbarIcon}
-                  onPress={() => navigation.navigate("Cart")}
-                />
-              </View>
+              <AntDesign
+                name="shoppingcart"
+                size={24}
+                color="black"
+                style={styles.navbarIcon}
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
+              />
+            ),
+          }}
+        />
+        <HomeStack.Screen
+          name="Dishes"
+          component={DashDishes}
+          options={{
+            headerRight: () => (
+              <AntDesign
+                name="shoppingcart"
+                size={24}
+                color="black"
+                style={styles.navbarIcon}
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
+              />
             ),
           }}
         />
@@ -61,7 +80,11 @@ const TabNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen name="Orders" component={Orders} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };

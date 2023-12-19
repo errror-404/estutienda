@@ -19,7 +19,11 @@ export default function Login() {
       .catch((error) => {
         const errorcode = error.code;
         errorcode === "auth/invalid-email"
-          ? Alert.alert("Invalid User", "Contraseña o usario invalido", [
+          ? Alert.alert("Invalid User", "El usuario es incorrecto", [
+              { text: "OK", onPress: () => console.log("OK Pressed") },
+            ])
+          : errorcode === "auth/wrong-password"
+          ? Alert.alert("Invalid Password", "Contraseña  invalida", [
               { text: "OK", onPress: () => console.log("OK Pressed") },
             ])
           : console.log();
@@ -31,7 +35,6 @@ export default function Login() {
       <Text style={styles.title2}>Sign in</Text>
       <View style={styles.container2}></View>
       <View style={styles.card}>
-        <Text style={styles.title}>Logo</Text>
         <View style={styles.textInputContainers}>
           <CustomTextInput
             onChangeText={(value) => setEmail(value)}

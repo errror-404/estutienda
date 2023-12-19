@@ -5,4 +5,21 @@ export interface Dish {
   price: number;
   description: string;
   units: number;
+  idrestaurant?: string;
+}
+export interface Restaurtants {
+  restid: string;
+  name: string;
+  image: string;
+}
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+export interface Basket {
+  units: number;
+  id: string;
+  idproduct: string;
+  iduser: string;
 }

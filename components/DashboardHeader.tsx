@@ -18,26 +18,24 @@ const DashboardHeader = () => {
         renderItem={({ item }) => (
           <CustomChip title={item.name} image={item.imagen} />
         )}
-        
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-      <Text style={styles.title}>Favoritos</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
+    margin: 16,
+    marginBottom: 50,
   },
-  title:{
+  title: {
     marginVertical: 16,
     padding: 8,
     fontSize: 18,
     fontWeight: "bold",
   },
-
 });
 
 export default DashboardHeader;

@@ -5,8 +5,9 @@ import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
 import UseProduct from "../hooks/UseProduct";
 import { useNavigation } from "@react-navigation/native";
+import { getAuth } from "firebase/auth";
 
-type Props = NativeStackScreenProps<Navigation, "DishDetail">;
+type Props = NativeStackScreenProps<Navigation, "DishDetail", "Cart">;
 
 const DishDetail = ({ route }: Props) => {
   const { dish } = route.params;
@@ -14,8 +15,16 @@ const DishDetail = ({ route }: Props) => {
   const { Agregar } = UseProduct();
 
   const agregarProducto = () => {
+    getAuth()
+      .currentUser?.getIdTokenResult()
+      .then((idTokenResult) => {
+        console.log(idTokenResult.claims.sub);
+        navigation.navigate("Cart");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     Agregar(dish);
-    navigation.navigate("Cart");
   };
 
   return (

@@ -61,5 +61,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     textAlign: "center",
+    color: "#1f6feb",
+  },
+  title2: {
+    fontSize: 18,
+    color: "black",
   },
 });

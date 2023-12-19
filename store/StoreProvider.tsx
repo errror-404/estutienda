@@ -1,4 +1,14 @@
-import React, { createContext, useReducer } from "react";
+import { getAuth } from "firebase/auth";
+import {
+  collection,
+  documentId,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import React, { createContext, useReducer, useState } from "react";
+import { database } from "../firebaseConfig";
 import { ProductState } from "../interfaces/interfaces";
 import { Dish } from "../utils/types/Dish";
 import { StoreReducer } from "./StoreReducer";
@@ -20,8 +30,50 @@ const StoreContext = createContext<global>({} as global);
 interface Props {
   children: React.ReactNode;
 }
+
 const StoreProvider = ({ children }: Props) => {
+  const [init, setinit] = useState<Dish[]>([]);
+  const obtenerDatos = async () => {
+    try {
+      const idTokenResult = await getAuth().currentUser?.getIdTokenResult();
+      const collectref = collection(database, "/basket");
+      const q = query(
+        collectref,
+        where("iduser", "==", idTokenResult?.claims.sub)
+      );
+      const querySnapshot = await getDocs(q);
+
+      for (const r of querySnapshot.docs) {
+        const idProduct: string = r.data().idproduct;
+
+        onSnapshot(
+          query(
+            collection(database, "/supplements"),
+            where(documentId(), "==", idProduct)
+          ),
+          (querySnapshot) => {
+            console.log(querySnapshot.size);
+            const data: Dish[] = querySnapshot.docs.map((doc) => ({
+              description: doc.data().category,
+              title: doc.data().name,
+              price: doc.data().scoops,
+              id: doc.id,
+              image: doc.data().image,
+              units: 1,
+              idrestaurant: doc.data().idrestaurant,
+            }));
+            setinit(data);
+          }
+        );
+      }
+    } catch (error) {
+      console.error("Error al obtener datos:", error);
+    }
+  };
+  obtenerDatos();
+  initial.products = init;
   const [productState, dispatch] = useReducer(StoreReducer, initial);
+
   const Agregar = (nuevo: Dish) => {
     dispatch({
       type: "AddProduct",
