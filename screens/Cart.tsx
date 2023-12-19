@@ -1,22 +1,16 @@
-import {
-  FlatList,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { FlatList, View, StyleSheet, Text } from "react-native";
 import React, { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
-import CustomCardCar from "../components/CustomCardCar";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Navigation } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
-type Props = NativeStackScreenProps<Navigation, "Cart">;
+import CustomCardCard from "../components/CustomCardCart";
+import { RoutesProps } from "../utils/types/Navigatetype";
 
-const Cart = ({ route }: Props) => {
+const Cart = () => {
   const { productState } = useContext(StoreContext);
   const navigation = useNavigation();
+
+  const { navigate } = useNavigation<RoutesProps>();
 
   return (
     <View style={styles.container}>
@@ -40,12 +34,26 @@ const Cart = ({ route }: Props) => {
       </Text>
 
       <FlatList
-        renderItem={({ item }) => (
+        renderItem={({ item }) => <CustomCardCard dish={item} />}
+        data={productState.products}
+        ListFooterComponent={() => (
           <>
-            <CustomCardCar dish={item} />
+            {productState.products.length === 0 ? (
+              <Text style={styles.emptyStateText}>
+                No hay productos en el carrito
+              </Text>
+            ) : (
+              <View style={styles.buttonContainer}>
+                <CustomButton
+                  variant="outlined"
+                  title="Pagar"
+                  size="large"
+                  onPress={() => navigate("PaymentScreen")}
+                />
+              </View>
+            )}
           </>
         )}
-        data={productState.products}
       />
       <View
         style={{ justifyContent: "center", alignItems: "center", bottom: 10 }}
@@ -61,10 +69,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
+  title: {
+    fontSize: 23,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 30,
+  },
   subtitle: {
     padding: 8,
     paddingBottom: 20,
     fontSize: 18,
+  },
+  emptyStateText: {
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "gray",
+  },
+  buttonContainer: {
+    marginTop: 24,
+    paddingRight: 20,
   },
 });
 export default Cart;

@@ -1,5 +1,5 @@
 import { Text, View, Image, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";

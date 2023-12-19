@@ -18,8 +18,6 @@ export default function Login() {
       })
       .catch((error) => {
         const errorcode = error.code;
-        const errorMessage = error.message;
-        console.log(errorcode);
         errorcode === "auth/invalid-email"
           ? Alert.alert("Invalid User", "El usuario es incorrecto", [
               { text: "OK", onPress: () => console.log("OK Pressed") },

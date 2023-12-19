@@ -1,5 +1,4 @@
 import {
-  Button,
   Image,
   StyleSheet,
   Text,
@@ -15,7 +14,7 @@ interface CustomCardProps extends TouchableOpacityProps {
   dish: Dish;
 }
 
-const CustomCardCar = ({ dish, ...rest }: CustomCardProps) => {
+const CustomCardCar = ({ dish }: CustomCardProps) => {
   const { Agregar, Eliminar } = UseProduct();
 
   return (

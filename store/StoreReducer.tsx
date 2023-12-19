@@ -5,16 +5,14 @@ import {
   deleteDoc,
   doc,
   getDocs,
-  onSnapshot,
   query,
-  setDoc,
   updateDoc,
   where,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
 import { database } from "../firebaseConfig";
 import { ProductState } from "../interfaces/interfaces";
-import { Dish, Basket } from "../utils/types/Dish";
+import { Dish } from "../utils/types/Dish";
+
 type ProductAction =
   | { type: "AddProduct"; paylod: Dish }
   | { type: "Delete"; paylod: Dish };
@@ -25,6 +23,7 @@ export const StoreReducer = (
 ): ProductState => {
   switch (action.type) {
     case "AddProduct":
+      // eslint-disable-next-line no-case-declarations
       const i = state.products.findIndex(
         (item) => item.id === action.paylod.id
       );
@@ -68,9 +67,11 @@ export const StoreReducer = (
       };
 
     case "Delete":
+      // eslint-disable-next-line no-case-declarations
       const d = state.products.findIndex(
         (item) => item.id === action.paylod.id
       );
+      // eslint-disable-next-line no-case-declarations
       const update = () => {
         state.products[d].units -= 1;
         getAuth()
@@ -94,6 +95,7 @@ export const StoreReducer = (
             });
           });
       };
+      // eslint-disable-next-line no-case-declarations
       const delet = () => {
         state.products.splice(d, 1);
         getAuth()

@@ -1,21 +1,18 @@
 import React from "react";
-import {
-  createNativeStackNavigator,
-  NativeStackScreenProps,
-} from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import Dashboard from "../screens/Dashboard";
 import Cart from "../screens/Cart";
 import Profile from "../screens/Profile";
 import Orders from "../screens/Orders";
-import { useNavigation } from "@react-navigation/native";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
 import { StyleSheet } from "react-native";
 import DashDishes from "../screens/DashDishes";
-import { getAuth } from "firebase/auth";
+import PaymentScreen from "../screens/PaymentScreen";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
@@ -61,12 +58,13 @@ const DashboardNavigation = () => {
         />
         <HomeStack.Screen
           options={{
-            headerShown: false,
+            headerTitle: "Canasta",
           }}
           name="Cart"
           component={Cart}
         />
         <HomeStack.Screen name="DishDetail" component={DishDetail} />
+        <HomeStack.Screen name="PaymentScreen" component={PaymentScreen} />
       </HomeStack.Navigator>
     </StoreProvider>
   );

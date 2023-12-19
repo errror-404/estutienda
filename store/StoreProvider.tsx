@@ -7,10 +7,10 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import React, { createContext, useEffect, useReducer, useState } from "react";
+import React, { createContext, useReducer, useState } from "react";
 import { database } from "../firebaseConfig";
 import { ProductState } from "../interfaces/interfaces";
-import { Basket, Dish } from "../utils/types/Dish";
+import { Dish } from "../utils/types/Dish";
 import { StoreReducer } from "./StoreReducer";
 
 interface Props {

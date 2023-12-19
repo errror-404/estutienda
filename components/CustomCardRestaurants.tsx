@@ -4,11 +4,10 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   Image,
-  ImageSourcePropType,
   View,
 } from "react-native";
 import React from "react";
-import { Dish, Restaurtants } from "../utils/types/Dish";
+import { Restaurtants } from "../utils/types/Dish";
 
 interface CustomChipProps extends TouchableOpacityProps {
   dish?: Restaurtants;

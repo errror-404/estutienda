@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import {
   auth,
@@ -9,7 +9,7 @@ import CustomTextInput from "../components/CustomTextInput";
 import CustomButton from "../components/CustomButton";
 import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { addDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -41,6 +41,7 @@ const Register = () => {
           : null;
       });
   };
+
   return (
     <View style={styles.container}>
       <View style={{ margin: 20, top: 30 }}>
