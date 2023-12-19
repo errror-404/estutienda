@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
@@ -10,7 +11,6 @@ import Orders from "../screens/Orders";
 import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import DishDetail from "../screens/DishDetail";
 import StoreProvider from "../store/StoreProvider";
-import { StyleSheet } from "react-native";
 import DashDishes from "../screens/DashDishes";
 import PaymentScreen from "../screens/PaymentScreen";
 
