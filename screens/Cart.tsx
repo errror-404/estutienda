@@ -9,14 +9,14 @@ import React, { useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import CustomCardCar from "../components/CustomCardCar";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Navigation } from "../utils/types/Navigatetype";
+import { Navigation, RoutesProps } from "../utils/types/Navigatetype";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
-type Props = NativeStackScreenProps<Navigation, "Cart">;
+type Props = NativeStackScreenProps<Navigation, "Cart", "Checkout">;
 
 const Cart = ({ route }: Props) => {
   const { productState } = useContext(StoreContext);
-  const navigation = useNavigation();
+  const navigation = useNavigation<RoutesProps>();
 
   return (
     <View style={styles.container}>
@@ -50,7 +50,13 @@ const Cart = ({ route }: Props) => {
       <View
         style={{ justifyContent: "center", alignItems: "center", bottom: 10 }}
       >
-        <CustomButton title="Continuar" variant="filled" onPress={() => {}} />
+        <CustomButton
+          title="Continuar"
+          variant="filled"
+          onPress={() => {
+            navigation.navigate("Checkout");
+          }}
+        />
       </View>
     </View>
   );

@@ -18,7 +18,6 @@ const DishDetail = ({ route }: Props) => {
     getAuth()
       .currentUser?.getIdTokenResult()
       .then((idTokenResult) => {
-        console.log(idTokenResult.claims.sub);
         navigation.navigate("Cart");
       })
       .catch((error) => {

@@ -26,7 +26,6 @@ const Profile = () => {
       const collectref = collection(database, "/Users");
       const q = query(collectref, where("id", "==", idTokenResult?.claims.sub));
       onSnapshot(q, (querySnapshot) => {
-        console.log(querySnapshot.size);
         querySnapshot.docs.map((doc) =>
           Setuser({
             name: doc.data().name,
@@ -34,7 +33,6 @@ const Profile = () => {
             id: doc.data().id,
           })
         );
-        console.log(user);
       });
     } catch (error) {
       console.error("Error al obtener datos:", error);

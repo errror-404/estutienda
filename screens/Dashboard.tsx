@@ -1,19 +1,11 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import CustomCard from "../components/CustomCard";
 import { Dish, Restaurtants } from "../utils/types/Dish";
 import DashboardHeader from "../components/DashboardHeader";
 import { useNavigation } from "@react-navigation/native";
 import { RoutesProps } from "../utils/types/Navigatetype";
 import { database } from "../firebaseConfig";
-import {
-  collection,
-  getDoc,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import CustomCardRestaurants from "../components/CustomCardRestaurants";
 
 const Dashboard = () => {

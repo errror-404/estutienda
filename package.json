@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
+    "@stripe/stripe-react-native": "^0.35.0",
     "dotenv": "^16.3.1",
     "expo": "^49.0.18",
     "expo-constants": "~13.0.1",

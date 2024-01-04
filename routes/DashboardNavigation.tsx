@@ -16,6 +16,7 @@ import StoreProvider from "../store/StoreProvider";
 import { StyleSheet } from "react-native";
 import DashDishes from "../screens/DashDishes";
 import { getAuth } from "firebase/auth";
+import CheckoutScreen from "../screens/CheckoutScreen";
 
 const HomeStack = createNativeStackNavigator<Navigation>();
 
@@ -67,6 +68,7 @@ const DashboardNavigation = () => {
           component={Cart}
         />
         <HomeStack.Screen name="DishDetail" component={DishDetail} />
+        <HomeStack.Screen name="Checkout" component={CheckoutScreen} />
       </HomeStack.Navigator>
     </StoreProvider>
   );

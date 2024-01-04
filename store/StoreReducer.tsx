@@ -77,7 +77,6 @@ export const StoreReducer = (
           .currentUser?.getIdTokenResult()
           .then(async (idTokenResult) => {
             const collectref = collection(database, "/basket");
-            console.log(d);
             const q = query(
               collectref,
               where("idproduct", "==", action.paylod.id),
@@ -114,7 +113,6 @@ export const StoreReducer = (
             });
           });
       };
-      console.log("cont" + state.products[d].units);
       state.products[d].units > 1 ? update() : delet();
       return {
         ...state,

@@ -52,18 +52,18 @@ export default function Login() {
             variant="link"
             style={styles.link}
           />
-        </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            title="Iniciar sesion"
-            variant="outlined"
-            onPress={() => iniciosesion()}
-          />
-          <CustomButton
-            title="Registrarse"
-            variant="filled"
-            onPress={() => navigation.navigate("Register")}
-          />
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              title="Iniciar sesion"
+              variant="outlined"
+              onPress={() => iniciosesion()}
+            />
+            <CustomButton
+              title="Registrarse"
+              variant="filled"
+              onPress={() => navigation.navigate("Register")}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   },
   textInputContainers: {
     marginVertical: 24,
+    top: 50,
   },
   card: {
     flex: 1,

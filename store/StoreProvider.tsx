@@ -45,6 +45,7 @@ const StoreProvider = ({ children }: Props) => {
 
       for (const r of querySnapshot.docs) {
         const idProduct: string = r.data().idproduct;
+        const unit: number = r.data().units;
 
         onSnapshot(
           query(
@@ -52,14 +53,13 @@ const StoreProvider = ({ children }: Props) => {
             where(documentId(), "==", idProduct)
           ),
           (querySnapshot) => {
-            console.log(querySnapshot.size);
             const data: Dish[] = querySnapshot.docs.map((doc) => ({
               description: doc.data().category,
               title: doc.data().name,
               price: doc.data().scoops,
               id: doc.id,
               image: doc.data().image,
-              units: 1,
+              units: unit,
               idrestaurant: doc.data().idrestaurant,
             }));
             setinit(data);

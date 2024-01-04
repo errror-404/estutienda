@@ -11,6 +11,7 @@ export interface Restaurtants {
   restid: string;
   name: string;
   image: string;
+  stripeCustomerId: string;
 }
 export interface User {
   id: string;
