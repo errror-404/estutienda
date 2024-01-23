@@ -21,6 +21,7 @@ const Dashboard = () => {
         restid: doc.id,
         name: doc.data().name,
         image: doc.data().image,
+        stripeCustomerId: doc.data().stripeCustomerId,
       }));
       Setsuplement(data);
     });
@@ -42,7 +43,6 @@ const Dashboard = () => {
         )}
         data={Restaurants}
         numColumns={1}
-        ListHeaderComponent={() => <DashboardHeader />}
       />
     </View>
   );

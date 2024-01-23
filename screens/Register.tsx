@@ -24,7 +24,6 @@ const Register = () => {
           name: name,
           id: userCredential.user.uid,
           email: email,
-          asiento: "",
         });
         alert("User creado");
       })

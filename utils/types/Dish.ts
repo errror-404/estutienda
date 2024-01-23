@@ -1,7 +1,7 @@
 export interface Dish {
   id: string;
   image: string;
-  title: string;
+  name: string;
   price: number;
   description: string;
   units: number;
@@ -23,4 +23,14 @@ export interface Basket {
   id: string;
   idproduct: string;
   iduser: string;
+}
+export interface Orders {
+  active: boolean;
+  id: string;
+  iduser: string;
+  products: Dish[];
+  status: string;
+  palco: string;
+  asiento: string;
+  idrestaurant: string;
 }

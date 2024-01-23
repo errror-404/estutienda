@@ -18,9 +18,9 @@ const DashDishes = () => {
 
     const unscribe = onSnapshot(q, (querySnapshot) => {
       const data: Dish[] = querySnapshot.docs.map((doc) => ({
-        description: doc.data().category,
-        title: doc.data().name,
-        price: doc.data().scoops,
+        description: doc.data().description,
+        name: doc.data().name,
+        price: doc.data().price,
         id: doc.id,
         image: doc.data().image,
         units: 1,

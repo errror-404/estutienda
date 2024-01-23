@@ -55,7 +55,7 @@ const DishDetail = ({ route }: Props) => {
       </View>
 
       <View style={{ margin: 16 }}>
-        <Text style={styles.title}>{dish.title}</Text>
+        <Text style={styles.title}>{dish.name}</Text>
         <Text>${dish.price}</Text>
         <CustomButton
           title="Agregar"

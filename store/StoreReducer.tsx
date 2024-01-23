@@ -17,7 +17,8 @@ import { ProductState } from "../interfaces/interfaces";
 import { Dish, Basket } from "../utils/types/Dish";
 type ProductAction =
   | { type: "AddProduct"; paylod: Dish }
-  | { type: "Delete"; paylod: Dish };
+  | { type: "Delete"; paylod: Dish }
+  | { type: "refresh" };
 
 export const StoreReducer = (
   state: ProductState,
@@ -120,6 +121,10 @@ export const StoreReducer = (
       };
 
     default:
-      return state;
+      console.log("paso");
+      return {
+        ...state,
+        products: [],
+      };
   }
 };

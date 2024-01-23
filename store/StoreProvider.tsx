@@ -23,6 +23,7 @@ type global = {
   productState: ProductState;
   Agregar: (nuevo: Dish) => void;
   Eliminar: (nuevo: Dish) => void;
+  refresh: () => void;
 };
 
 const StoreContext = createContext<global>({} as global);
@@ -54,12 +55,12 @@ const StoreProvider = ({ children }: Props) => {
           ),
           (querySnapshot) => {
             const data: Dish[] = querySnapshot.docs.map((doc) => ({
-              description: doc.data().category,
-              title: doc.data().name,
-              price: doc.data().scoops,
+              description: doc.data().description,
+              name: doc.data().name,
+              price: doc.data().price,
               id: doc.id,
               image: doc.data().image,
-              units: unit,
+              units: unit == null ? 1 : unit,
               idrestaurant: doc.data().idrestaurant,
             }));
             setinit(data);
@@ -86,8 +87,14 @@ const StoreProvider = ({ children }: Props) => {
       paylod: nuevo,
     });
   };
+  const refresh = () => {
+    dispatch({
+      type: "refresh",
+    });
+  };
+
   return (
-    <StoreContext.Provider value={{ productState, Agregar, Eliminar }}>
+    <StoreContext.Provider value={{ productState, Agregar, Eliminar, refresh }}>
       {children}
     </StoreContext.Provider>
   );
